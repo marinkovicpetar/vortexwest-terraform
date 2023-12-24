@@ -1,14 +1,14 @@
 # vortexwest-terraform
 
 Terraform module to provision the AWS resources required for VortexWest deployment of [frontend](https://hub.docker.com/layers/micic/vortexwest/frontend/images/sha256-05dbbe40847058bf5888cc3b5d902fe93d4e5a7508ea82597cbd711d5c7f3993?context=explore) and [backend](https://hub.docker.com/layers/micic/vortexwest/backend/images/sha256-4678c18e63293c04bbc18543c8d465f239a42705d55ecc969aeb6ae882762746?context=explore) Docker images in ECS cluster:
-- [`VPC`]() with 3 AZ, public, private and database subnets, one NAT Gateway per VPC, provisioned by [`OSS Terraform module`]()
-- [`RDS`]() with latest PostgreSQL 16.1, provisioned by [`OSS Terraform module`]()
-- [`ECS`]() resources - ECS cluster with ASG and EC2, ECS tasks and ECS services for both `frontend` and `backend` services
-- [`ALB`]()
-- [`CloudWatch Log Groups`]
-- various [`IAM`]() entities, such as `IAM role` and `IAM Instance Profile` for ASG EC2 instances, `IAM role` and `IAM policy` for `frontend` and `backend` ECS tasks to be used as execution roles
+- [`VPC`](https://docs.aws.amazon.com/vpc/) with 3 AZ, public, private and database subnets, one NAT Gateway per VPC, provisioned by [`OSS Terraform module`](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
+- [`RDS`](https://docs.aws.amazon.com/rds/) with latest PostgreSQL 16.1, provisioned by [`OSS Terraform module`](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest)
+- [`ECS`](https://docs.aws.amazon.com/ecs/) resources - ECS cluster with ASG and EC2, ECS tasks and ECS services for both `frontend` and `backend` services
+- [`ALB`](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) with one listener for `HTTP:80` port and Target groups for both `frontend` and `backend` services
+- [`CloudWatch Log Groups`](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html) for both `frontend` and `backend` services
+- various [`IAM`](https://docs.aws.amazon.com/iam/) entities, such as `IAM role` and `IAM Instance Profile` for ASG EC2 instances, `IAM role` and `IAM policy` for `frontend` and `backend` ECS tasks to be used as execution roles
 - [`Secrets Manager`]() entry to store RDS credentials
-- various [`Security Groups`] for ALB, EC2 instances in ASG, RDS, provisioned by [`OSS Terraform module`]()
+- various [`Security Groups`](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) for ALB, EC2 instances in ASG, RDS, provisioned by [`OSS Terraform module`](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest)
 
 
 ## Usage
