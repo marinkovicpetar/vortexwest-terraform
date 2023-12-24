@@ -17,7 +17,7 @@ Include this repository as a module in your existing terraform code:
 
 ```hcl
 module "vortexwest" {
-  source = "git@github.com:marinkovicpetar/vortexwest-terraform"
+  source = "git@github.com:marinkovicpetar/vortexwest-terraform.git"
 
   project_name = var.project_name
   environment  = var.environment
